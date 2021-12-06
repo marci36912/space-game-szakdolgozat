@@ -9,7 +9,6 @@ public class Utes : MonoBehaviour
     [SerializeField] private float lokes = 100;
     [SerializeField] private float dmg = 1;
     [SerializeField] private ParticleSystem hitEff;
-    public PlayerHP plyrHP;
     private Animator anim;
     private bool zonaban;
     private float atmero = 0.8f;
@@ -41,7 +40,7 @@ public class Utes : MonoBehaviour
         if (ido <= Time.time)
         {
             Instantiate(hitEff, playerCheck.position, Quaternion.identity);
-            plyrHP.sebzes(dmg, lokes);
+            PlayerHP.Instance.sebzes(dmg, lokes);
             ido = Time.time + cd;
         }                                  
     }

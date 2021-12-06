@@ -9,6 +9,13 @@ public class LoszerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI loszer;
     void LateUpdate()
     {
-        loszer.text = SpaceGun.Instance.Tar() + "/" + SpaceGun.Instance.maxTar();
+        if(SpaceGun.aktivFegyver.GetNev() == "Shotgun")
+        {
+        loszer.text = (SpaceGun.Instance.Tar()/6) + "/" + (SpaceGun.aktivFegyver.GetTar()/6);
+        }
+        else
+        {
+        loszer.text = SpaceGun.Instance.Tar() + "/" + SpaceGun.aktivFegyver.GetTar();
+        }
     }
 }

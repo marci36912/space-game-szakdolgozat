@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHP : MonoBehaviour
 {
-    [SerializeField] private Slider hp;
+    public static PlayerHP Instance;
+
+    [SerializeField] private SpriteRenderer hpImg;
+    [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private Color egy;
+    [SerializeField] private Color ket;
     [SerializeField] private Rigidbody2D player;
-    private float elete;
+    [SerializeField] private float elete;
     private float maxElet = 100;
 
+    private void Awake() {
+        Instance = this;
+    }
     void Start()
     {
         elete = maxElet;
@@ -23,13 +31,9 @@ public class PlayerHP : MonoBehaviour
 
     private void elet()
     {
-        if (elete <= maxElet)
-        {
-            hp.maxValue = maxElet;
-            hp.value = elete;
+        hpText.text = elete.ToString();
 
-            hp.fillRect.GetComponentInChildren<Image>().color = egy;
-        }
+        hpImg.color = Color.Lerp(ket, egy, elete/100);
     }
 
     public void sebzes(float dmg, float irany)

@@ -36,6 +36,7 @@ public class HP : MonoBehaviour
     private void dead()
     {
         Instantiate(death, enemy.transform.position, Quaternion.identity);
+        KillCount.Instance.kill();
         Destroy(gameObject);
     }
 }

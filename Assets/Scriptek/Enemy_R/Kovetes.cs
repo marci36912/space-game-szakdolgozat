@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Kovetes : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private float sebesseg = 0.5f;
+    private Transform player;
+    private float sebesseg = 0.8f;
     private Animator anim;
     private float tavolsag = 0.8f;
     private float tav;
@@ -16,7 +16,7 @@ public class Kovetes : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         utes = GetComponent<Utes>();
     }
     void Update()

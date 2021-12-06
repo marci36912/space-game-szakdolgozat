@@ -9,30 +9,26 @@ public class SpaceGun : MonoBehaviour
 
     [SerializeField] private Transform sp;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject reloadText;
     [SerializeField] private SpriteRenderer mf;
     [SerializeField] private SpriteRenderer gun;
+    [SerializeField] private Sprite pt;
     [SerializeField] private Sprite ar;
     [SerializeField] private Sprite sg;
 
-
-    private int aktiv = 2;
     private int tar;
     private float cd = 0;
 
-    private static FegyverClass aktivFegyver; //0=pt,1=ar,2=sg
-
-    private float velocity, spread;
+    public static FegyverClass aktivFegyver;
 
     private void Start()
     {
         Instance = this;
 
-        ActiveFegyver();
+        ActiveFegyver(2);
 
-        tar = aktivFegyver.GetTar();
-
-        velocity = aktivFegyver.GetBuVell();
-        spread = aktivFegyver.GetSpread();
+        gun.transform.Rotate(0, 0, -90);
+        sp.Rotate(0, 0, 90);
     }
 
     void Update()
@@ -49,6 +45,8 @@ public class SpaceGun : MonoBehaviour
             }
             else
             {
+                GameObject tmp = Instantiate(reloadText, sp.position, Quaternion.identity, gameObject.transform);
+                Destroy(tmp, 1f);
                 tar = aktivFegyver.GetTar();
                 cd = Time.time + 1.5f;
             }
@@ -56,30 +54,28 @@ public class SpaceGun : MonoBehaviour
     }
 
     #region metodusok
-    private void ActiveFegyver()
+    public void ActiveFegyver(int aktiv)
     {
         switch (aktiv)
         {
             case 0:
                 aktivFegyver = Fegyverek.GetFegyver(0);
+                gun.sprite = pt;              
+                sp.localPosition = new Vector3(0.24f, -0.029f, sp.position.z);
+                tar = aktivFegyver.GetTar();
                 break;
             case 1:
                 aktivFegyver = Fegyverek.GetFegyver(1);
                 gun.sprite = ar;
-                gun.transform.Rotate(0, 0, -90);
-                sp.Rotate(0, 0, 90);
                 sp.localPosition = new Vector3(0.655f, 0.034f, sp.position.z);
+                tar = aktivFegyver.GetTar();
                 break;
             case 2:
                 aktivFegyver = Fegyverek.GetFegyver(2);
                 gun.sprite = sg;
-                gun.transform.Rotate(0, 0, -90);
-                sp.Rotate(0, 0, 90);
                 sp.localPosition = new Vector3(0.481f, -0.017f, sp.transform.position.z);
-                break;
-            default:
-                aktivFegyver = Fegyverek.GetFegyver(0);
-                break;
+                tar = aktivFegyver.GetTar();
+                break;            
         }
     }
 
@@ -96,31 +92,8 @@ public class SpaceGun : MonoBehaviour
     }
     #endregion
 
-    #region returnok
-
-    public float vellocity()
-    {
-        return velocity;
-    }
-
-    public float spreadd()
-    {
-        return spread;
-    }
-
-    public int maxTar()
-    {
-        return aktivFegyver.GetTar();
-    }
-
     public int Tar()
     {
         return tar;
     }
-
-    public int Damage()
-    {
-        return aktivFegyver.GetSebzes();
-    }
-    #endregion
 }

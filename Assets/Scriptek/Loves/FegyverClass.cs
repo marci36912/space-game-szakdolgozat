@@ -12,6 +12,11 @@ public class FegyverClass
     private float spread;
     private float bulletVelocity;
 
+
+    public FegyverClass()
+    {
+
+    }
     public FegyverClass(string nev, float cd, int tar, float spr, int sebzes, float bvc, int bc)
     {
         this.nev = nev;

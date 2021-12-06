@@ -16,8 +16,8 @@ public class pewpew : MonoBehaviour
     {
         sp = loszer.transform;
         sp2 = GameObject.FindWithTag("sp2");
-        spread = SpaceGun.Instance.spreadd();
-        velocity = SpaceGun.Instance.vellocity();
+        spread = SpaceGun.aktivFegyver.GetSpread();
+        velocity = SpaceGun.aktivFegyver.GetBuVell();
 
         loszer.rotation = szogFloat();
         irany = szogSp().normalized;
@@ -30,14 +30,14 @@ public class pewpew : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-         /*HP enemy = collision.GetComponent<HP>();
+         HP enemy = collision.GetComponent<HP>();
 
          if (enemy != null)
          {
             Destroy(this.gameObject);
             Instantiate(hit, transform.position, Quaternion.LookRotation(szogForditott()));
-            enemy.getHit(SpaceGun.Instance.Damage(), 1);
-         }*/
+            enemy.getHit(SpaceGun.aktivFegyver.GetSebzes(), 1);
+         }
         if (collision.name.Equals("platform"))
         {
             Destroy(this.gameObject);
