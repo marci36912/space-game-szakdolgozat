@@ -12,9 +12,7 @@ public class SpaceGun : MonoBehaviour
     [SerializeField] private GameObject reloadText;
     [SerializeField] private SpriteRenderer mf;
     [SerializeField] private SpriteRenderer gun;
-    [SerializeField] private Sprite pt;
-    [SerializeField] private Sprite ar;
-    [SerializeField] private Sprite sg;
+    [SerializeField] private Sprite[] fegyverek;
 
     private int tar;
     private float cd = 0;
@@ -45,7 +43,7 @@ public class SpaceGun : MonoBehaviour
             }
             else
             {
-                GameObject tmp = Instantiate(reloadText, sp.position, Quaternion.identity, gameObject.transform);
+                GameObject tmp = Instantiate(reloadText, new Vector3(sp.position.x, sp.position.y, 0), Quaternion.identity, gameObject.transform);
                 Destroy(tmp, 1f);
                 tar = aktivFegyver.GetTar();
                 cd = Time.time + 1.5f;
@@ -60,19 +58,19 @@ public class SpaceGun : MonoBehaviour
         {
             case 0:
                 aktivFegyver = Fegyverek.GetFegyver(0);
-                gun.sprite = pt;              
+                gun.sprite = fegyverek[0];              
                 sp.localPosition = new Vector3(0.24f, -0.029f, sp.position.z);
                 tar = aktivFegyver.GetTar();
                 break;
             case 1:
                 aktivFegyver = Fegyverek.GetFegyver(1);
-                gun.sprite = ar;
+                gun.sprite = fegyverek[1];
                 sp.localPosition = new Vector3(0.655f, 0.034f, sp.position.z);
                 tar = aktivFegyver.GetTar();
                 break;
             case 2:
                 aktivFegyver = Fegyverek.GetFegyver(2);
-                gun.sprite = sg;
+                gun.sprite = fegyverek[2];
                 sp.localPosition = new Vector3(0.481f, -0.017f, sp.transform.position.z);
                 tar = aktivFegyver.GetTar();
                 break;            
