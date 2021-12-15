@@ -4,73 +4,84 @@ using UnityEngine;
 
 public class ufo : MonoBehaviour
 {
+    public static ufo Instance;
+
     [SerializeField] private Transform[] spawnpontok;
     [SerializeField] private ParticleSystem spawnEffect;
     [SerializeField] private Transform spawnPont;
     [SerializeField] private GameObject enemy;
     private Rigidbody2D spaceship;
     private Vector3 pos;
-    private static int enemies;
+    [SerializeField] private int enemies;
+    private int max;
     private int enemiesMax;
     private bool szunet;
+    private bool spawn;
+    public static bool wave;
     public static int waveCount = 0;
 
-    /*
-    NOTE TO SELF
 
-    Kivitelezni: Addig spawnoljon elleségeket, amíg el nem éri a maximális számot
-    Startban megadni egy random pozicíót az űrhajónak a spawnRandommal, majd
-    az fixedUpdate-ben force-ot adni neki, amíg el nem ér oda
-    ha ott van, akkor lespawnol egy ellenséges robotot, vár 5 mp-et, majd ezt megismétli.
-
-    a spawnolást egy iEnumerator-ban csináld Instance-el, a spawnPont transformról a spawnEffect kíséretében.
-
-    update-ben ha enemiesMax != max, akkor spawnoljon,
-    ha enemiesMax == max, akkor "szünetre küldeni"
-    addig maradjon szüneten, amíg az enemies száma el nem éri a nullát, utána 10 mp szünetben legyen elérhető a bolt, amit egy public boolal ellenőrzünk
-    szünet után a enemiesMax-ot megint nullázzuk, majd egyel növeljük a max számot
-    */
+    private void Awake() {
+        Instance = this;
+    }
     private void Start() {
         spaceship = GetComponent<Rigidbody2D>();
         pos = spawnRandom();
-
+        spawn = true;
+        szunet = true;
         enemies = 0;
-        enemiesMax = 0;
+        max = 3;
+        enemiesMax = max;        
     }
     private void Update() {      
-            //while-al próbáltam itt, de az chrasheli a unityt. Legközelebb egy rendes feltétel kell majd ide.
-            StartCoroutine(spawnenemy());
-            szunet = true;
-        if(enemiesMax == 3)
+        spaceship.velocity = ((pos - transform.position));
+
+        if(enemiesMax == max)
         {
             StartCoroutine(cooldown());
         }
+        else
+        {           
+            StartCoroutine(spawnenemy());           
+        }
     }
-
     private IEnumerator cooldown()
     {
+        if(enemies == 0)
+        {
+        wave = true;
         if(szunet){
-        Debug.Log("cd" + Time.time);
+        CDUI.timeSet();
+        waveCount++;
+        max++;
         }
-        szunet = false;
-        spaceship.MovePosition(new Vector2(6,6));
-        yield return new WaitForSeconds(10);
-        Debug.Log(Time.time);
+        szunet = false;      
+        spawn = false;
+        yield return new WaitForSecondsRealtime(11); 
         enemiesMax = 0;
-        enemies = 0;
+        spawn = true;
+        }
+        else if (enemies >= 1)
+        {
+            szunet = true;
+            pos = (new Vector2(6,6));
+        }
     }
     private IEnumerator spawnenemy()
-    {
-        if(Vector3.Distance(transform.position, pos) < 1){
+    {       
+        if(Vector3.Distance(transform.position, pos) < 1 && spawn){
+        spawn = false;
+        Instantiate(enemy, spawnPont.position, Quaternion.identity);
+        Instantiate(spawnEffect, spawnPont.position, Quaternion.identity);
         enemies++;
-        enemiesMax++;
-        Debug.Log(enemies);
+        enemiesMax++;      
+        yield return new WaitForEndOfFrame();
+        wave = false;
         pos = spawnRandom();
-        yield return new WaitForSeconds(50);
+        spawn = true;
         }
-        else spaceship.AddForce((pos - transform.position) * 20 * Time.deltaTime, ForceMode2D.Force);
     }
-    public static void enemyDeath()
+    public void enemyDeath()
     {
         enemies--;
     }

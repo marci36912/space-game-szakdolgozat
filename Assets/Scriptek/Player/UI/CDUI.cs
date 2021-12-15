@@ -13,15 +13,20 @@ public class CDUI : MonoBehaviour
     }
     void Update()
     {
+        if(time <= 0)
+        {
+            ui.enabled = false;
+        }
         if(time > 0)
         {
-            time /= Time.deltaTime;
-            ui.text = time.ToString();
+            ui.enabled = true;
+            time -= Time.deltaTime;
+            ui.text = (Mathf.Round(time * 100) / 100).ToString();
         }
     }
 
     public static void timeSet()
     {
-        time = 10;
+        time = 11;
     }
 }

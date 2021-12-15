@@ -37,7 +37,7 @@ public class HP : MonoBehaviour
     {
         Instantiate(death, enemy.transform.position, Quaternion.identity);
         KillCount.Instance.kill();
-        ufo.enemyDeath();
+        ufo.Instance.enemyDeath();
         Destroy(gameObject);
     }
 }

@@ -20,13 +20,17 @@ public class Bolt : MonoBehaviour
 
     private void Update()
     {
-        boltSz.SetBool("nyitva", bolt);
-        anim.SetBool("nyitvaE", bolt);
-        if (Input.GetKeyDown(KeyCode.E) && bolt)
-        {                                 
-            BoltUI.enabled = true;  //IDÕ MEGÁLLíTÁSA MIKÖZBEN VÁSÁRLÁS VAN, MAJD FOLYTATÁS, WAVE RENDSZER, KURVA ANYÁD
-            Time.timeScale = 0;             
-        }       
+        anim.SetBool("nyitvaE", ufo.wave);
+
+        if(ufo.wave)
+        {
+            boltSz.SetBool("nyitva", bolt);
+            if (Input.GetKeyDown(KeyCode.E) && bolt)
+            {                                 
+                BoltUI.enabled = true;  //IDï¿½ MEGï¿½LLï¿½Tï¿½SA MIKï¿½ZBEN Vï¿½Sï¿½RLï¿½S VAN, MAJD FOLYTATï¿½S, WAVE RENDSZER, KURVA ANYï¿½D
+                Time.timeScale = 0;             
+            }
+        }   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

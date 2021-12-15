@@ -129,7 +129,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6042871666392334983
@@ -146,4 +146,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loszer: {fileID: 6042871666392334980}
   hit: {fileID: 7129090447629340195, guid: 2e69a58931c3f4a42929249c53eca56a, type: 3}
-  sp2: {fileID: 0}

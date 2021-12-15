@@ -34,7 +34,6 @@ public class KarMozgas : MonoBehaviour
         eger = sp.position - egerKep;
         egerRad = Mathf.Atan2(eger.y, eger.x) * Mathf.Rad2Deg;
 
-
         kar.eulerAngles = new Vector3(0, 0, egerRad + 180);
     }
 
