@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParalaxEffect : MonoBehaviour
-{
-    private float hossz;
-    private float kezdesP;
-	public GameObject kamera;
-	public float effektSzorzo;
+{  
+	[SerializeField] private GameObject kamera;
+	[SerializeField] private float effektSzorzo;
+
+	private float hossz;
+	private float kezdesP;
 
 	void Start () {
 		kezdesP = transform.position.x;

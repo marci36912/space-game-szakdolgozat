@@ -11,11 +11,13 @@ public class SpaceGun : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject reloadText;
     [SerializeField] private SpriteRenderer mf;
+    [SerializeField] private GameObject mfFeny;
     [SerializeField] private SpriteRenderer gun;
     [SerializeField] private Sprite[] fegyverek;
 
+    [HideInInspector] public float cd = 0;
+
     private int tar;
-    private float cd = 0;
 
     public static FegyverClass aktivFegyver;
 
@@ -23,7 +25,7 @@ public class SpaceGun : MonoBehaviour
     {
         Instance = this;
 
-        ActiveFegyver(2);
+        ActiveFegyver(0);
 
         gun.transform.Rotate(0, 0, -90);
         sp.Rotate(0, 0, 90);
@@ -31,23 +33,24 @@ public class SpaceGun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (tar == 0 || tar < aktivFegyver.GetTar() && Input.GetKeyDown(KeyCode.R) && cd < Time.time)
         {
-            if (tar > 0)
+            GameObject tmp = Instantiate(reloadText, new Vector3(sp.position.x, sp.position.y, 0), Quaternion.identity, gameObject.transform);
+            Destroy(tmp, 1f);
+            tar = aktivFegyver.GetTar();
+            cd = Time.time + 1.5f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {           
+            if (cd < Time.time)
             {
-                if (cd < Time.time)
+                if (tar > 0)
                 {
                     StartCoroutine(loves());
                     cd = aktivFegyver.GetCooldown() + Time.time;
                 }
-            }
-            else
-            {
-                GameObject tmp = Instantiate(reloadText, new Vector3(sp.position.x, sp.position.y, 0), Quaternion.identity, gameObject.transform);
-                Destroy(tmp, 1f);
-                tar = aktivFegyver.GetTar();
-                cd = Time.time + 1.5f;
-            }
+            }           
         }
     }
 
@@ -80,6 +83,7 @@ public class SpaceGun : MonoBehaviour
     private IEnumerator loves()
     {
         mf.enabled = true;
+        mfFeny.SetActive(true);
         for (int i = 0; i < aktivFegyver.GetCount(); i++)
         {
             Instantiate(bullet, sp.position, Quaternion.identity);
@@ -87,6 +91,7 @@ public class SpaceGun : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         mf.enabled = false;
+        mfFeny.SetActive(false);
     }
     #endregion
 

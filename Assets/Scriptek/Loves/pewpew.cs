@@ -36,7 +36,7 @@ public class pewpew : MonoBehaviour
          {
             Destroy(this.gameObject);
             Instantiate(hit, transform.position, Quaternion.LookRotation(szogForditott()));
-            enemy.getHit(SpaceGun.aktivFegyver.GetSebzes(), 1);
+            enemy.getHit(SpaceGun.aktivFegyver.GetSebzes());
          }
         if (collision.name.Equals("platform"))
         {

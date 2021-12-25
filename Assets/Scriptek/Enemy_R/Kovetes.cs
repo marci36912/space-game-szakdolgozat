@@ -29,7 +29,6 @@ public class Kovetes : MonoBehaviour
         }
         else
         {
-            //utes.megut();
             anim.SetFloat("sebesseg", 0);
         }
 
@@ -37,10 +36,6 @@ public class Kovetes : MonoBehaviour
         {
             
             transform.position = Vector2.MoveTowards(transform.position, player.position, sebesseg * Time.deltaTime);
-        }
-        else
-        {
-            //Debug.Log("xd");
         }
 
         if (flipp == false && tav > 0)

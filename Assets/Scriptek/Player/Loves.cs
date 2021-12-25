@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Loves : MonoBehaviour
 {
-    [SerializeField] private Transform sp;
+    [SerializeField] private Transform sp;                  //NEM HASZNÁLT SCRIPT
     [SerializeField] private LineRenderer lr;
     [SerializeField] private ParticleSystem hit;
     [SerializeField] private Rigidbody2D player;
     private Animator anim;
     private bool shooting = false;
     private int dmg = 1;
-    private int irany;
 
 
     private void Start()
@@ -20,14 +19,6 @@ public class Loves : MonoBehaviour
     }
     void Update()
     {
-        if (player.transform.rotation.y >= 0)
-        {
-            irany = 1;
-        }
-        else
-        {
-            irany = -1;
-        }
 
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
@@ -59,9 +50,9 @@ public class Loves : MonoBehaviour
                 lr.SetPosition(1, rc.point);
 
                  if (enemy != null)
-                    {
-                       enemy.getHit(dmg, irany);
-                    }
+                 {
+                    enemy.getHit(dmg);
+                 }
 
 
             }

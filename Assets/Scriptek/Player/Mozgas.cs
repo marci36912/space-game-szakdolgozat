@@ -24,6 +24,8 @@ public class Mozgas : MonoBehaviour
     {
         player = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        Time.timeScale = 1;
     }
     void Update()
     {

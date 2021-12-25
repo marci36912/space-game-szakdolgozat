@@ -18,7 +18,7 @@ public class ufo : MonoBehaviour
     private bool szunet;
     private bool spawn;
     public static bool wave;
-    public static int waveCount = 0;
+    public static int waveCount;
 
 
     private void Awake() {
@@ -31,6 +31,7 @@ public class ufo : MonoBehaviour
         szunet = true;
         enemies = 0;
         max = 3;
+        waveCount = 0;
         enemiesMax = max;        
     }
     private void Update() {      
@@ -57,7 +58,7 @@ public class ufo : MonoBehaviour
         }
         szunet = false;      
         spawn = false;
-        yield return new WaitForSecondsRealtime(11); 
+        yield return new WaitForSeconds(11); 
         enemiesMax = 0;
         spawn = true;
         }
@@ -75,7 +76,7 @@ public class ufo : MonoBehaviour
         Instantiate(spawnEffect, spawnPont.position, Quaternion.identity);
         enemies++;
         enemiesMax++;      
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(1);
         wave = false;
         pos = spawnRandom();
         spawn = true;

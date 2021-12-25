@@ -14,7 +14,7 @@ public class KarMozgas : MonoBehaviour
     private bool fordit = false;
 
 
-    void Update()
+    void FixedUpdate()
     {
         karForditas();
 

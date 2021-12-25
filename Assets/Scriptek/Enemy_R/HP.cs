@@ -8,6 +8,7 @@ public class HP : MonoBehaviour
     [SerializeField] private float eletMax = 100;
     private float elet;
     private Rigidbody2D enemy;
+
     public enemyHPCsik hpcs;
 
 
@@ -27,10 +28,9 @@ public class HP : MonoBehaviour
         }
     }
 
-    public void getHit(int hit, int irany)
-    {
+    public void getHit(int hit)
+    {       
         elet -= hit;
-        enemy.AddForce(new Vector2(irany, 0) * 3, ForceMode2D.Impulse);
     }
 
     private void dead()

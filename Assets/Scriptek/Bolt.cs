@@ -6,12 +6,12 @@ using TMPro;
 
 public class Bolt : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro e;
     [SerializeField] private Canvas BoltUI;
     [SerializeField] private Animator boltSz;
+    [SerializeField] private GameObject pauseMenu;
 
     private Animator anim;
-    private bool bolt;
+    public static bool bolt;
 
     private void Start()
     {
@@ -22,14 +22,20 @@ public class Bolt : MonoBehaviour
     {
         anim.SetBool("nyitvaE", ufo.wave);
 
-        if(ufo.wave)
+        if (ufo.wave)
         {
             boltSz.SetBool("nyitva", bolt);
             if (Input.GetKeyDown(KeyCode.E) && bolt)
-            {                                 
-                BoltUI.enabled = true;  //ID� MEG�LL�T�SA MIK�ZBEN V�S�RL�S VAN, MAJD FOLYTAT�S, WAVE RENDSZER, KURVA ANY�D
+            {
+                pauseMenu.SetActive(false);
+                SpaceGun.Instance.cd = Time.time + 0.5f;
+                BoltUI.enabled = true;
                 Time.timeScale = 0;             
             }
+        }
+        else
+        {
+            boltSz.SetBool("nyitva", ufo.wave);         
         }   
     }
 
