@@ -18,7 +18,7 @@ public class Kamerakovetes : MonoBehaviour
 		}
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if (Player)
 		{

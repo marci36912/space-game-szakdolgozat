@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Loves : MonoBehaviour
 {
-    [SerializeField] private Transform sp;                  //NEM HASZNÁLT SCRIPT
+    [SerializeField] private Transform sp;                  //NEM HASZNALT SCRIPT
     [SerializeField] private LineRenderer lr;
     [SerializeField] private ParticleSystem hit;
     [SerializeField] private Rigidbody2D player;
@@ -41,8 +41,8 @@ public class Loves : MonoBehaviour
         shooting = false;
         if (rc)
             {
-            Vector3 plyr = sp.position - rc.transform.position;
-            HP enemy = rc.transform.GetComponent<HP>();
+                Vector3 plyr = sp.position - rc.transform.position;
+                HP enemy = rc.transform.GetComponent<HP>();
 
                 Instantiate(hit, rc.point, Quaternion.LookRotation(plyr));
 
@@ -55,11 +55,6 @@ public class Loves : MonoBehaviour
                  }
 
 
-            }
-            else
-            {
-                lr.SetPosition(0, sp.position);
-                lr.SetPosition(1, sp.position + sp.right * 100);
             }
 
         lr.enabled = true;

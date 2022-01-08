@@ -15,6 +15,7 @@ public class PlayerHP : MonoBehaviour
     [SerializeField] private Rigidbody2D player;
     [SerializeField] private Canvas deathmenu;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private AudioSource getHit;
     private float elete;   
     private float maxElet;
 
@@ -27,10 +28,15 @@ public class PlayerHP : MonoBehaviour
         elete = maxElet;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         elet();
+        death();      
+    }
 
+
+    private void death()
+    {
         if (elete <= 0)
         {
             Ragdoll.Instance.ragdollBe();
@@ -38,7 +44,6 @@ public class PlayerHP : MonoBehaviour
             deathmenu.enabled = true;
         }
     }
-
     private void elet()
     {
         elete = Mathf.Clamp(elete, 0, maxElet);
@@ -50,6 +55,7 @@ public class PlayerHP : MonoBehaviour
 
     public void sebzes(float dmg, float irany)
     {
+        getHit.Play();
         elete -= dmg;
         player.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
     }

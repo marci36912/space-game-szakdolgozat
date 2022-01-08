@@ -16,9 +16,9 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
+            SpaceGun.Instance.cd += 0.5f;
             if (!paused)
-            {
-                SpaceGun.Instance.cd += 0.5f;
+            {               
                 Time.timeScale = 0;
                 pauseMenu.enabled = true;
                 paused = true;
@@ -38,11 +38,13 @@ public class PauseMenu : MonoBehaviour
     }
     public void mainMenu()
     {
+        PlayerData.saveData();
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
     public void exit()
     {
+        PlayerData.saveData();
         Application.Quit();
     }
 }

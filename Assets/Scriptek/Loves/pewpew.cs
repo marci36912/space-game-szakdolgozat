@@ -38,11 +38,11 @@ public class pewpew : MonoBehaviour
             Instantiate(hit, transform.position, Quaternion.LookRotation(szogForditott()));
             enemy.getHit(SpaceGun.aktivFegyver.GetSebzes());
          }
-        if (collision.name.Equals("platform"))
-        {
-            Destroy(this.gameObject);
-            Instantiate(hit, transform.position, Quaternion.LookRotation(szogForditott()));
-        }      
+         else if (collision.name.Equals("platform"))
+         {
+             Destroy(this.gameObject);
+             Instantiate(hit, transform.position, Quaternion.LookRotation(szogForditott()));
+         }      
     }
 
     #region szogek

@@ -12,6 +12,7 @@ public class Spaceship : MonoBehaviour
     
     void Start()
     {
+        Time.timeScale = 1;
         spaceship = GetComponent<Rigidbody2D>();
         felfele = true;
     }

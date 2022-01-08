@@ -8,12 +8,16 @@ public class SpaceGun : MonoBehaviour
     public static SpaceGun Instance;
 
     [SerializeField] private Transform sp;
+    [SerializeField] private Transform sp2;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject reloadText;
-    [SerializeField] private SpriteRenderer mf;
     [SerializeField] private GameObject mfFeny;
+    [SerializeField] private SpriteRenderer mf;   
     [SerializeField] private SpriteRenderer gun;
     [SerializeField] private Sprite[] fegyverek;
+    [SerializeField] private AudioSource lovesHang;
+    [SerializeField] private LineRenderer lr;
+    [SerializeField] private ParticleSystem hit;
 
     [HideInInspector] public float cd = 0;
 
@@ -43,13 +47,10 @@ public class SpaceGun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {           
-            if (cd < Time.time)
+            if (cd < Time.time && tar > 0)
             {
-                if (tar > 0)
-                {
                     StartCoroutine(loves());
                     cd = aktivFegyver.GetCooldown() + Time.time;
-                }
             }           
         }
     }
@@ -82,16 +83,53 @@ public class SpaceGun : MonoBehaviour
 
     private IEnumerator loves()
     {
-        mf.enabled = true;
-        mfFeny.SetActive(true);
-        for (int i = 0; i < aktivFegyver.GetCount(); i++)
+
+        if (aktivFegyver.GetNev() == "Shotgun")
         {
-            Instantiate(bullet, sp.position, Quaternion.identity);
-            tar--;
+            mf.enabled = true;
+            lovesHang.Play();
+            mfFeny.SetActive(true);
+            for (int i = 0; i < aktivFegyver.GetCount(); i++)
+            {
+                Instantiate(bullet, sp.position, Quaternion.identity);
+                tar--;
+            }
+            yield return new WaitForSeconds(0.1f);
+            mf.enabled = false;
+            mfFeny.SetActive(false);
         }
-        yield return new WaitForSeconds(0.1f);
-        mf.enabled = false;
-        mfFeny.SetActive(false);
+        else
+        {
+            int tmp = LayerMask.GetMask("Enemy", "Fold");
+            RaycastHit2D rc = Physics2D.Raycast(sp.position, sp2.position - sp.position, Mathf.Infinity, tmp);
+            if (rc)
+            {
+                HP enemy = rc.transform.GetComponent<HP>();
+
+                lr.SetPosition(0, sp.position);
+                lr.SetPosition(1, rc.point);
+
+                if (enemy != null)
+                {
+                    enemy.getHit(aktivFegyver.GetSebzes());
+                }
+            }
+
+            lovesHang.Play();
+            Instantiate(hit, rc.point, Quaternion.LookRotation(sp.position - rc.transform.position));
+
+            tar--;
+
+            mf.enabled = true;
+            lr.enabled = true;
+            mfFeny.SetActive(true);
+
+            yield return new WaitForSeconds(0.02f);
+
+            mf.enabled = false;
+            lr.enabled = false;            
+            mfFeny.SetActive(false);
+        }
     }
     #endregion
 

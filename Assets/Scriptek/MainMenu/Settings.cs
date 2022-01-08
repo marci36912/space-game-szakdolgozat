@@ -6,13 +6,24 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     [SerializeField] private Dropdown resolutionsDrop;
-    [SerializeField] private GameObject[] menuk;
+    [SerializeField] private Canvas[] menuk;
+    [SerializeField] private InputField input;
     private Resolution[] resolutions;
     private bool fullScreen;
 
+    public static string Nev;
+
     void Start()
     {
-        Time.timeScale = 0;
+        if (Nev == null)
+        {
+            input.text = "Player";
+            Nev = input.text;
+        }
+        else
+        {
+            input.text = Nev;
+        }
 
         if (Screen.fullScreen == true) fullScreen = true;
         else fullScreen = false;
@@ -53,9 +64,9 @@ public class Settings : MonoBehaviour
     }
     public void back()
     {
-        Time.timeScale = 1;
-        menuk[1].SetActive(false);
-        menuk[0].SetActive(true);
+        PlayerData.saveData();
+        menuk[1].enabled = false;
+        menuk[0].enabled = true;
     }
     public void performance()
     {
@@ -64,5 +75,10 @@ public class Settings : MonoBehaviour
     public void quality()
     {
         QualitySettings.SetQualityLevel(1);
+    }
+
+    public static void saveName(string name)
+    {
+        Nev = name;
     }
 }

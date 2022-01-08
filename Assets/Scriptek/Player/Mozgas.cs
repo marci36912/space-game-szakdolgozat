@@ -17,9 +17,6 @@ public class Mozgas : MonoBehaviour
     private bool jobbra = true;
 
 
-
-
-
     private void Start()
     {
         player = GetComponent<Rigidbody2D>();
