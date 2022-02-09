@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,15 +47,19 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.19f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Scriptek\MainMenu\Settings.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\Scriptek\Enemy_R\Utes.cs" />
+    <Compile Include="Assets\Scriptek\SaveSystem\PlayerData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\WaveC.cs" />
     <Compile Include="Assets\Scriptek\SaveSystem\Save.cs" />
@@ -70,9 +74,13 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\LoszerUI.cs" />
+    <Compile Include="Assets\Scriptek\MainMenu\StartGames.cs" />
+    <Compile Include="Assets\Scriptek\MainMenu\Hello.cs" />
+    <Compile Include="Assets\Scriptek\Player\UI\BestRun.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scriptek\Bolt.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Player\Shooting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -95,7 +103,7 @@
     <Compile Include="Assets\Scriptek\Loves\FegyverClass.cs" />
     <Compile Include="Assets\Scriptek\Player\Mozgas.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\KillCount.cs" />
-    <Compile Include="Assets\Scriptek\Loves\pewpew.cs" />
+    <Compile Include="Assets\Scriptek\Loves\lovedek.cs" />
     <Compile Include="Assets\Scriptek\Enemy_R\Kovetes.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\PlayerHP.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -106,11 +114,13 @@
     <Compile Include="Assets\Scriptek\Enemy_R\HP.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scriptek\Loves\Fegyverek.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Player\Movement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scriptek\Player\KarMozgas.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scriptek\Hatter\Kamerakovetes.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Player\Health.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\PauseMenu.cs" />
@@ -120,9 +130,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scriptek\Loves\SpaceGun.cs" />
-    <Compile Include="Assets\Scriptek\SaveSystem\PlayerData.cs" />
-    <Compile Include="Assets\Scriptek\MainMenu\Hello.cs" />
-    <Compile Include="Assets\Scriptek\Player\UI\BestRun.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Player\AmmoCount.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\UI\ChaCus.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\UI\StartGame.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Game\Wincondition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

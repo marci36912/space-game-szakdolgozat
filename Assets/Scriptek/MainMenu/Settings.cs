@@ -8,6 +8,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private Dropdown resolutionsDrop;
     [SerializeField] private Canvas[] menuk;
     [SerializeField] private InputField input;
+    [SerializeField] private Toggle fulscreenToggle;
     private Resolution[] resolutions;
     private bool fullScreen;
 
@@ -25,8 +26,8 @@ public class Settings : MonoBehaviour
             input.text = Nev;
         }
 
-        if (Screen.fullScreen == true) fullScreen = true;
-        else fullScreen = false;
+        fullScreen = Screen.fullScreen;
+        fulscreenToggle.isOn = fullScreen;
 
         resolutions = Screen.resolutions;
         List<string> res = new List<string>();
@@ -66,6 +67,7 @@ public class Settings : MonoBehaviour
     {
         PlayerData.saveData();
         menuk[1].enabled = false;
+        menuk[2].enabled = false;
         menuk[0].enabled = true;
     }
     public void performance()

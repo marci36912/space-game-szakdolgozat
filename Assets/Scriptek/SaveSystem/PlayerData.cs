@@ -27,7 +27,7 @@ public class PlayerData : MonoBehaviour
     {
         Settings.Nev = adatok.nev;
         KillCount.best = adatok.legjobbKor;
-        Screen.SetResolution(adatok.screenWidth, adatok.screenHeight, adatok.fullScreen);
+        //Screen.SetResolution(adatok.screenWidth, adatok.screenHeight, adatok.fullScreen);
         QualitySettings.SetQualityLevel(adatok.graficsQuality);
         AudioListener.volume = adatok.volume;
     }

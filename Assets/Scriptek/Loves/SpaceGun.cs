@@ -100,8 +100,8 @@ public class SpaceGun : MonoBehaviour
         }
         else
         {
-            int tmp = LayerMask.GetMask("Enemy", "Fold");
-            RaycastHit2D rc = Physics2D.Raycast(sp.position, sp2.position - sp.position, Mathf.Infinity, tmp);
+            int mask = LayerMask.GetMask("Enemy", "Fold");
+            RaycastHit2D rc = Physics2D.Raycast(sp.position, sp2.position - sp.position, Mathf.Infinity, mask);
             if (rc)
             {
                 HP enemy = rc.transform.GetComponent<HP>();
