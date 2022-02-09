@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public float cd;
     public int ammo;
 
     [SerializeField] private KeyCode shooting;
     [SerializeField] private Transform sp;
     [SerializeField] private LineRenderer lr;
 
-    private float cd;
 
     private void Start()
     {
         ammo = 4;
-        cd = Time.time;
     }
     private void Update()
     {
@@ -33,7 +32,7 @@ public class Shooting : MonoBehaviour
     private void reload()
     {
         ammo = 4;
-        cd += 1.5f;
+        cd = Time.time + 1.5f;
     }
 
     private IEnumerator shoot()
@@ -59,7 +58,7 @@ public class Shooting : MonoBehaviour
         }
 
         lr.enabled = true;
-        cd += 1f;
+        cd = Time.time + 1f;
         yield return new WaitForSeconds(0.02f);
         lr.enabled = false;
         ammo--;

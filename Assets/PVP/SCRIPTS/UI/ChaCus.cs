@@ -13,30 +13,22 @@ public class ChaCus : MonoBehaviour
     [SerializeField] private SpriteRenderer p1Face;
     [SerializeField] private SpriteRenderer p1;
 
-    private int p1hatActive;
-    private int p1FaceActive;
-    private int p1ColActive;
+    private static int p1hatActive = 0;
+    private static int p1FaceActive = 0;
+    private static int p1ColActive = 0;
 
     [Header("P2")]
     [SerializeField] private SpriteRenderer p2Hat;
     [SerializeField] private SpriteRenderer p2Face;
     [SerializeField] private SpriteRenderer p2;
 
-    private int p2hatActive;
-    private int p2FaceActive;
-    private int p2ColActive;
+    private static int p2hatActive = 0;
+    private static int p2FaceActive = 0;
+    private static int p2ColActive = 0;
 
     private void Start()
     {
         Time.timeScale = 0;
-
-        p1hatActive = 0;
-        p1FaceActive = 0;
-        p1ColActive = 0;
-
-        p2hatActive = 0;
-        p2FaceActive = 0;
-        p2ColActive = 0;
 
         p1Hat.sprite = hat[p1hatActive];
         p1Face.sprite = face[p1FaceActive];
