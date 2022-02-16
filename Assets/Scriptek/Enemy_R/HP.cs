@@ -16,7 +16,6 @@ public class HP : MonoBehaviour
     {
         elet = eletMax;
 
-        hpcs.elet(elet,eletMax);
         enemy = GetComponent<Rigidbody2D>();
     }
     void Update()

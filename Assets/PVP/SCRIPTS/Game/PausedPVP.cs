@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PausedPVP : MonoBehaviour
 {
     [SerializeField] private Canvas menu;
-    private bool apused = false;
+    private bool pausedRN = false;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -18,17 +18,17 @@ public class PausedPVP : MonoBehaviour
 
     private void pause()
     {
-        if (apused)
+        if (pausedRN)
         {
             Time.timeScale = 0;
             menu.enabled = true;
-            apused = !apused;
+            pausedRN = !pausedRN;
         }
         else
         {
             Time.timeScale = 1;
             menu.enabled = false;
-            apused = !apused;
+            pausedRN = !pausedRN;
         }
     }
 

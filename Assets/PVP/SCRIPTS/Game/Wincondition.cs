@@ -6,8 +6,6 @@ using TMPro;
 
 public class Wincondition : MonoBehaviour
 {
-    /* TODO   
-     *      RENDES MAP */
     [SerializeField] private GameObject[] player;
     [SerializeField] private TextMeshProUGUI winText;
 

@@ -14,8 +14,7 @@ public class Menu : MonoBehaviour
     {
         menuk[0].enabled = false;
         menuk[1].enabled = false;
-        menuk[2].enabled = true;
-        //SceneManager.LoadScene(1);      
+        menuk[2].enabled = true;  
     }
 
     public void gameExit()
