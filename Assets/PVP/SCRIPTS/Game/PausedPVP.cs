@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PausedPVP : MonoBehaviour
 {
     [SerializeField] private Canvas menu;
+    [SerializeField] private TextMeshProUGUI stats;
     private bool pausedRN = false;
+
+
+    private void Start()
+    {
+        stats.text = $"P1 WINS: {Wincondition.P1Win}\nP2 WINS: {Wincondition.P2Win}";
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

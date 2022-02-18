@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform sp;
     [SerializeField] private LineRenderer lr;
 
+    private bool shot;
+
 
     private void Start()
     {
@@ -19,16 +21,22 @@ public class Shooting : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(shooting) && cd < Time.time && ammo > 0)
+        {
+            shot = true;
+        }
+    }
+    private void FixedUpdate()
+    {
         if (ammo == 0)
         {
             reload();
         }
-        if (Input.GetKeyDown(shooting) && cd < Time.time && ammo > 0)
+        if (shot)
         {
             StartCoroutine(shoot());
         }
     }
-
     private void reload()
     {
         ammo = 4;
@@ -37,6 +45,7 @@ public class Shooting : MonoBehaviour
 
     private IEnumerator shoot()
     {
+        shot = false;
         int mask = LayerMask.GetMask("Player", "Fold");
         RaycastHit2D rc = Physics2D.Raycast(sp.position, sp.right, Mathf.Infinity, mask);
         if (rc)

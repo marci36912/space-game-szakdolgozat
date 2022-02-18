@@ -24,7 +24,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         mozgas();
-        megfordulas();
 
         if (Input.GetKeyDown(jump))
         {
@@ -35,6 +34,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * 5, rb.velocity.y);
+        megfordulas();
 
         ugras();
     }

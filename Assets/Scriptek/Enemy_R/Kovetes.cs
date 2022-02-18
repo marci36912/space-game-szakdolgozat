@@ -10,14 +10,11 @@ public class Kovetes : MonoBehaviour
     private float tavolsag = 0.8f;
     private float tav;
     private bool flipp = false;
-    private Utes utes;
-
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        utes = GetComponent<Utes>();
     }
     void Update()
     {
@@ -52,6 +49,6 @@ public class Kovetes : MonoBehaviour
     {
         flipp = !flipp;
 
-            transform.Rotate(0, 180f, 0);       
+        transform.Rotate(0, 180f, 0);       
     }
 }

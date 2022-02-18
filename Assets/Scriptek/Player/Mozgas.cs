@@ -14,7 +14,7 @@ public class Mozgas : MonoBehaviour
     private float poz;
     private bool ugrikE = false;
     private bool ugrikEFold;
-    private bool jobbra = true;
+    //private bool jobbra = true;
 
 
     private void Start()
@@ -50,24 +50,6 @@ public class Mozgas : MonoBehaviour
         }
         
         #endregion
-        #region mozgasfordulas
         player.velocity = new Vector2(poz * sebesseg, player.velocity.y);
-
-        /*if (jobbra == false && poz > 0)
-        {
-            irany();
-        }
-        else if (jobbra == true && poz < 0)
-        {
-            irany();
-        }*/
-        #endregion
-    }
-
-    private void irany()
-    {
-        jobbra = !jobbra;
-
-        transform.Rotate(0f, 180f, 0f);
     }
 }

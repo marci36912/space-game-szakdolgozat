@@ -22,6 +22,10 @@ public class Wincondition : MonoBehaviour
         {
             StartCoroutine(win());
         }
+        else if (player.Length == 0)
+        {
+            StartCoroutine(draw());
+        }
     }
 
     private IEnumerator win()
@@ -37,6 +41,24 @@ public class Wincondition : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    private IEnumerator draw()
+    {
+        winText.text = "DRAW";
+        if (first)
+        {
+            drawCount();
+            first = false;
+        }
+
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void drawCount()
+    {
+        P1Win++;
+        P2Win++;
+    }
     private void winLogic()
     {
         if (player[0].name == "P1")

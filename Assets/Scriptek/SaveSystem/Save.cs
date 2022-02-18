@@ -4,9 +4,7 @@ using UnityEngine;
 public class Save
 {
     public string nev;
-
     public int legjobbKor;
-
     public int screenHeight;
     public int screenWidth;
     public bool fullScreen;
