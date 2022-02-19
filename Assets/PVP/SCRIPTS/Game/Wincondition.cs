@@ -14,6 +14,10 @@ public class Wincondition : MonoBehaviour
 
     private bool first = true;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
     private void LateUpdate()
     {
         player = player.Where(x => x != null).ToArray();

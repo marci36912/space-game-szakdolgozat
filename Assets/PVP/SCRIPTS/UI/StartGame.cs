@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class StartGame : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TextMeshProUGUI stats;
+
+    [SerializeField] private Scene[] scenes;
 
     public static bool first = false;
 
@@ -27,7 +30,8 @@ public class StartGame : MonoBehaviour
     }
     public void startGame()
     {
-        foreach (var item in objektek)
+        SceneManager.LoadScene(Random.Range(3,5));
+        /*foreach (var item in objektek)
         {
             item.SetActive(true);
         }
@@ -45,6 +49,7 @@ public class StartGame : MonoBehaviour
         stats.text = $"P1 WINS: {Wincondition.P1Win}\nP2 WINS: {Wincondition.P2Win}";
         Time.timeScale = 1;
         first = true;
+        */
     }
 
     private void setPos()

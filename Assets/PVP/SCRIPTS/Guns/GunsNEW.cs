@@ -26,6 +26,10 @@ public class GunsNEW : FegyverClass
         this.bulletCount = 1;
     }
 
+    public float getChance()
+    {
+        return chance;
+    }
     public bool getCharge()
     {
         return charge;

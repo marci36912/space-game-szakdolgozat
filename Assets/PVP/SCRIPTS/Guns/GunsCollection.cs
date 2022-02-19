@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunsCollection : MonoBehaviour
 {
-    private static List<GunsNEW> kollekcio = new List<GunsNEW>();
+    private static readonly List<GunsNEW> kollekcio = new List<GunsNEW>();
     private void Awake()
     {
         kollekcio.Add(new GunsNEW("Revolver", 1, 4, 0, 20, 1, 0.6f, false));         //0
@@ -18,5 +18,10 @@ public class GunsCollection : MonoBehaviour
     public static GunsNEW returnGun(int n)
     {
         return kollekcio[n];
+    }
+
+    public static int getCount()
+    {
+        return kollekcio.Count;
     }
 }

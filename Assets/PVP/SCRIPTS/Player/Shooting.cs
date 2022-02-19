@@ -14,6 +14,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private GameObject reloadText;
     [SerializeField] private ParticleSystem shotgunFlash;
 
+    [SerializeField] private GameObject sr;
     private GunsNEW details;
     private bool shot;
     private bool keyUp = true;
@@ -22,6 +23,7 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        //sr = GameObject.Find("gun");
         details = new GunsNEW();
         ammo = details.GetTar();
         timeCharge = 0;
@@ -223,6 +225,32 @@ public class Shooting : MonoBehaviour
     public void getDetails(GunsNEW g)
     {
         details = g;
+        setSize();
         reload();
+    }
+
+    private void setSize()
+    {
+        switch (details.GetNev())
+        {
+            case "Revolver":
+                sr.transform.localScale = new Vector3(0.02f, 0.02f, 1);
+                break;
+            case "Assault Rifle":
+                sr.transform.localScale = new Vector3(0.15f, 0.15f, 1);
+                break;
+            case "Burst Rifle":
+                sr.transform.localScale = new Vector3(0.1f, 0.1f, 1);
+                break;
+            case "Shotgun":
+                sr.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+                break;
+            case "Sniper":
+                sr.transform.localScale = new Vector3(0.05f, 0.05f, 1);
+                break;
+            default:
+                sr.transform.localScale = new Vector3(0.1f, 0.6f, 1);
+                break;
+        }
     }
 }
