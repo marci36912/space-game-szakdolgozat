@@ -18,7 +18,7 @@ public class Wincondition : MonoBehaviour
     {
         player = player.Where(x => x != null).ToArray();
 
-        if (player.Length <= 1)
+        if (player.Length == 1)
         {
             StartCoroutine(win());
         }
@@ -36,7 +36,6 @@ public class Wincondition : MonoBehaviour
             winLogic();
             first = false;
         }
-
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -46,18 +45,11 @@ public class Wincondition : MonoBehaviour
         winText.text = "DRAW";
         if (first)
         {
-            drawCount();
             first = false;
         }
 
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void drawCount()
-    {
-        P1Win++;
-        P2Win++;
     }
     private void winLogic()
     {

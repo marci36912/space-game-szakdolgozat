@@ -15,6 +15,8 @@ public class NewRound : MonoBehaviour
         p1 = GameObject.Find("P1");
         p2 = GameObject.Find("P2");
 
+        p2.GetComponent<Movement>().irany();
+
         p1.transform.position = spawnsP1[Random.Range(0, spawnsP1.Length)].position;
         p2.transform.position = spawnsP2[Random.Range(0, spawnsP2.Length)].position;
     }

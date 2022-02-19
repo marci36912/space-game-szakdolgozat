@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FegyverClass
 {
-    private string nev;
-    private int tar;
-    private int sebzes;
-    private int bulletCount;
-    private float cooldown;
-    private float spread;
-    private float bulletVelocity;
+    protected string nev;
+    protected int tar;
+    protected int sebzes;
+    protected int bulletCount;
+    protected float cooldown;
+    protected float spread;
+    protected float bulletVelocity;
 
 
     public FegyverClass()

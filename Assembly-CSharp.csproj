@@ -65,14 +65,17 @@
     <Compile Include="Assets\PVP\SCRIPTS\UI\ChaCus.cs" />
     <Compile Include="Assets\Scriptek\SaveSystem\Save.cs" />
     <Compile Include="Assets\Scriptek\Player\Effektek.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Guns\ReloadText.cs" />
     <Compile Include="Assets\Scriptek\WaveSystem\ufo.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\CDUI.cs" />
     <Compile Include="Assets\Scriptek\SaveSystem\PlayerSave.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scriptek\MainMenu\Hatter.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Guns\GetRandomGun.cs" />
     <Compile Include="Assets\PVP\SCRIPTS\Game\KameraBounds.cs" />
     <Compile Include="Assets\Scriptek\Player\Ragdoll.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Player\HealthNEW.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\LoszerUI.cs" />
@@ -84,8 +87,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\PVP\SCRIPTS\Player\Shooting.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Guns\GunsCollection.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Game\MapBottom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Guns\GunsNEW.cs" />
     <Compile Include="Assets\Scriptek\MainMenu\Zene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\PVP\SCRIPTS\Game\Wincondition.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\Scriptek\Player\UI\DeathMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Game\NewRound.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scriptek\Enemy_R\enemyHPCsik.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
@@ -134,8 +141,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scriptek\Loves\SpaceGun.cs" />
-    <Compile Include="Assets\PVP\SCRIPTS\Game\NewRound.cs" />
-    <Compile Include="Assets\PVP\SCRIPTS\Player\HealthNEW.cs" />
+    <Compile Include="Assets\PVP\SCRIPTS\Game\GunShower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

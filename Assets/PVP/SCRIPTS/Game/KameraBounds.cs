@@ -38,6 +38,10 @@ public class KameraBounds : MonoBehaviour
     }
     private float getTav()
     {
+        if (player.Length == 0)
+        {
+            return 0;
+        }
         Bounds kozep = new Bounds(player[0].position, Vector3.zero);
 
         for (int i = 0; i < player.Length; i++)
@@ -49,7 +53,11 @@ public class KameraBounds : MonoBehaviour
     }
     private Vector3 getKozep()
     {
-        if (player.Length == 1)
+        if (player.Length == 0)
+        {
+            return new Vector3(0,0);
+        }
+        else if (player.Length == 1)
         {
             return player[0].position;
         }
