@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChaCus : MonoBehaviour
 {
+    private ChaCus me;
+
     [Header("sprites")]
     [SerializeField] private Sprite[] hat;
     [SerializeField] private Sprite[] face;
@@ -26,10 +29,66 @@ public class ChaCus : MonoBehaviour
     private static int p2FaceActive = 0;
     private static int p2ColActive = 0;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (me == null)
+        {
+            me = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    void OnEnable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        getRenderers();
+        setSprites();
+    }
+
     private void Start()
     {
+        getRenderers();
+
         Time.timeScale = 0;
 
+        setSprites();
+    }
+    private void getRenderers()
+    {
+        var P1 = GameObject.Find("P1");
+        //Debug.Log(P1.name);
+
+        var P1Face = P1.transform.Find("FaceParts");
+
+        var P2 = GameObject.Find("P2");
+        var P2Face = P2.transform.Find("FaceParts");
+
+        p1Hat = P1Face.transform.Find("hat").GetComponent<SpriteRenderer>();
+        p1Face = P1Face.transform.Find("face").GetComponent<SpriteRenderer>();
+        p1 = P1.GetComponent<SpriteRenderer>();
+
+        p2Hat = P2Face.transform.Find("hat").GetComponent<SpriteRenderer>();
+        p2Face = P2Face.transform.Find("face").GetComponent<SpriteRenderer>();
+        p2 = P2.GetComponent<SpriteRenderer>();
+    }
+    private void setSprites()
+    {
         p1Hat.sprite = hat[p1hatActive];
         p1Face.sprite = face[p1FaceActive];
         p1.color = p1Colors[p1ColActive];

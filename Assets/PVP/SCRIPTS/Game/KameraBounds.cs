@@ -11,7 +11,7 @@ public class KameraBounds : MonoBehaviour
     private Camera main;
 
     private float min = 2.6f;
-    private float max = 7.5f;
+    private float max = 11f;
 
     private void Start()
     {

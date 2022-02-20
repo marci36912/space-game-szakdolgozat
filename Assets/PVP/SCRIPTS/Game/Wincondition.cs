@@ -41,7 +41,8 @@ public class Wincondition : MonoBehaviour
             first = false;
         }
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        int id = Random.Range(3, 8);
+        SceneManager.LoadScene(id);
     }
 
     private IEnumerator draw()
@@ -53,7 +54,8 @@ public class Wincondition : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        int id = Random.Range(3, 8);
+        SceneManager.LoadScene(id);
     }
     private void winLogic()
     {

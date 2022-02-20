@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,15 @@ public class GunShower : MonoBehaviour
     [SerializeField] private Transform[] spawnok;
     [SerializeField] private GameObject[] fegyverek;
 
-    private List<float> Chances = new List<float>();
+    private List<float> Chances;
     private float rnd;
     private float cd;
 
     private void Start()
     {
+        RNJesus.seed(DateTime.Now.Millisecond);
+        Chances = new List<float>();
+
         for (int i = 0; i < GunsCollection.getCount(); i++)
         {
             Chances.Add(GunsCollection.returnGun(i).getChance());
@@ -21,9 +25,9 @@ public class GunShower : MonoBehaviour
 
         Chances = Chances.OrderBy(x => x).ToList();
     }
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        if (cd <= Time.time)
+        if (cd < Time.time)
         {
             spawnGun();
         }
@@ -32,40 +36,24 @@ public class GunShower : MonoBehaviour
     private void spawnGun()
     {
         Instantiate(fegyverek[getGunID()], new Vector3(getRandom(), 10), Quaternion.identity);
-        cd = Time.time + 20;
+        cd = Time.time + 5;
     }
     private int getGunID()
     {
-        rnd = Random.RandomRange(0f, 1f);
-
-        Debug.Log(rnd);
-
-        for (int i = 0; i < Chances.Count - 1; i++)
+        rnd = (float)RNJesus.even().rangeInclusive_f(0f, 1f);
+        //Debug.Log(rnd);                 //szarul ellenorzi a szamokat es mindig ugyan azt a fegyvert adja vissza
+        for (int i = 0; i < fegyverek.Length; i++)
         {
-            if (Chances[i] >= rnd)
+            if (Chances[i] > rnd)
             {
+               // Debug.Log(Chances[i] + " : " + i + " : " + rnd);
                 return i;
             }
         }
         return 0;
     }
-
-    private int getID()
-    {
-        return Random.Range(0, fegyverek.Length);
-    }
     private float getRandom()
     {
-        return Random.Range(spawnok[0].position.x, spawnok[1].position.x);
+        return UnityEngine.Random.Range(spawnok[0].position.x, spawnok[1].position.x);
     }
-}
-
-public enum FegyverekID
-{
-    Revolver,
-    AssaultRifle,
-    BurstRifle,
-    ChargeRifle,
-    Shotgun,
-    Sniper
 }
